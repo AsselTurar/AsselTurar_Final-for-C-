@@ -1,91 +1,60 @@
-﻿//Задача 2: Напишите программу, которая на вход принимает два числа и выдаёт, какое число большее, а какое меньшее.
-
-
-int max = 0;
-int min = 0;
-
-Console.Write("Введите первое число: ");
-int firstNumber = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите второе число: ");
-int secondNumber = Convert.ToInt32(Console.ReadLine());
-
-if(firstNumber > secondNumber)
+//Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+Console.Clear();
+int Prompt(string message)
 {
-    max = firstNumber;
-    min = secondNumber;
+  Console.Write(message);
+  int result = Convert.ToInt32(Console.ReadLine());
+  return result;
 }
-else
+int NaturalNumber(int n, int m)
 {
-    max = secondNumber;
-    min = firstNumber;
+  if (n == m) return n;
+  else Console.Write($"{NaturalNumber(n, m + 1)}, ");
+  return m;
 }
-Console.WriteLine("max = " + max + " и " + "min = " + min);
-
-
-
-
-//Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел. (Сравнить с каждым)
-
-int max = 0;
-
-Console.Write("Введите первое число: ");
-int firstNumber = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите второе число: ");
-int secondNumber = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите третье число: ");
-int thirdNumber = Convert.ToInt32(Console.ReadLine());
-
-if(firstNumber > max)
+int n = Prompt("Input N: ");
+if (n < 1)
 {
-    max = firstNumber;
+  Console.WriteLine("Ввдите положительное число!");
+  return;
 }
-if(secondNumber > max)
+Console.WriteLine(NaturalNumber(n, 1));
+
+
+
+//Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+Console.Clear();
+int Prompt(string message)
 {
-    max = secondNumber;
+  Console.Write(message);
+  int result = Convert.ToInt32(Console.ReadLine());
+  return result;
 }
-if(thirdNumber > max)
+int SumOfElements(int n, int m)
 {
-    max = thirdNumber;
+  if (n == m) return n;
+  else return SumOfElements(n + 1, m) + n;
 }
-
-Console.WriteLine("max = " + max);
-
-
-
+int n = Prompt("Input N: ");
+int m = Prompt("Input M: ");
+Console.WriteLine(SumOfElements(n, m));
 
 
-//Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
-Console.Write("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
 
-int remDiv = number % 2;
-
-if(remDiv == 0)
+//Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+Console.Clear();
+int Prompt(string message)
 {
-    Console.WriteLine("Да");
+  Console.Write(message);
+  int result = Convert.ToInt32(Console.ReadLine());
+  return result;
 }
-else
+int Akkerman(int m, int n)
 {
-    Console.WriteLine("Нет");
+  if (m == 0) return n + 1;
+  if (m > 0 && n == 0) return Akkerman(m - 1, 1);
+  else return Akkerman(m - 1, Akkerman(m, n - 1));
 }
-
-
-
-
-//Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
-Console.Write("Введите число: ");
-int number = Convert.ToInt32(Console.ReadLine());
-
-int evenNumber = 2;
-
-if(number > 1)
-{
-    while(evenNumber <= number)
-    {
-        Console.Write(evenNumber + " ");
-        evenNumber = evenNumber + 2;
-    }
-}
+int m = Prompt("Input M: ");
+int n = Prompt("Input N: ");
+Console.WriteLine($"A({m},{n}) = {Akkerman(m, n)}");
